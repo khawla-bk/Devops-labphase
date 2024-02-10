@@ -5,16 +5,16 @@ pipeline {
         stage('Checkout') {
             steps {
                 script {
-                    git branch: 'ideaash',
-                    credentialsId: 'Github',
-                    url: 'https://github.com/Ideaash/labphase-1.0.git'
+                    git branch: 'main',
+                    credentialsId: 'khawla-bk',
+                    url: 'https://github.com/khawla-bk/Devops-labphase.git'
                 }
         }
         
         stage('Build') {
             steps {
                 script {
-                    docker.build('username-DockerHub/first-app-test')
+                    docker.build('kbenkadida006/first-app-test')
                 }
             }
         }
@@ -22,10 +22,10 @@ pipeline {
         stage('Push to Docker Hub') {
             steps {
                 // Authentification Docker Hub
-                withDockerRegistry([credentialsId: 'votre-identifiant-credentials-dockerhub', url: 'https://index.docker.io/v1/']) {
+                withDockerRegistry([credentialsId: 'kbenkadida006', url: 'https://index.docker.io/v1/']) {
                     // Pousser l'image vers Docker Hub
                     script {
-                        docker.image('username-DockerHub').push('latest')
+                        docker.image('kbenkadida006').push('latest')
                     }
                 }
             }
