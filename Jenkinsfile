@@ -11,13 +11,13 @@ pipeline {
                 }
         }
         
-        // stage('Build') {
-        //     steps {
-        //         script {
-        //             docker.build('kbenkadida006/first-app-test')
-        //         }
-        //     }
-        // }
+        stage('Build') {
+            steps {
+                script {
+                    docker.build('kbenkadida006/first-app-test')
+                }
+            }
+        }
         
         // stage('Push to Docker Hub') {
         //     steps {
