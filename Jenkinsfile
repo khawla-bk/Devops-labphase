@@ -29,5 +29,16 @@ pipeline {
                 }
             }
         }
+
+        stage('Push to Docker Hub') {
+            steps {
+                // Authenticate with Docker Hub
+                withDockerRegistry([credentialsId: 'kbenkadida006', url: 'https://index.docker.io/v1/']) {
+                    // Push the image to Docker Hub
+                    script {
+                        docker.image('kbenkadida006/first-app-test-v2').push('latest')
+                    }
+                }
+            }
     }
 }
